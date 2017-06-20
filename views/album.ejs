@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html>
+<% include header %>
+<title>Vinyl : <%= album.title %></title>
+<body>
+  <h1><%= album.title %></h1>
+  <em>by <%= album.artist %></em>
+  <div>
+    <h2>Reviews</h2>
+    <form  action= <%= `/new_review/${album.id}` %> >
+      <button/>Add review</button>
+    </form>
+  </div>
+
+  <!-- TODO: implement album reviews -->
+
+</body>
+</html>

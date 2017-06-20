@@ -1,0 +1,14 @@
+<!DOCTYPE html> 
+<html>
+<% include header %>
+<body>
+
+  <div class="new_review">
+    <h1>New review for <%= album.title %></h1>
+    <form action="/submit_review" method="post">
+      <textarea rows="10" cols="100" maxlength="300" required></textarea>
+      <button type="submit">Submit</button>
+    </form>
+  </div>
+</body>
+</html>
