@@ -2,6 +2,10 @@
 <html>
 <head>
   <title>Vinyl</title>
+  <script
+  src="https://code.jquery.com/jquery-3.2.1.min.js"
+  integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
+  crossorigin="anonymous"></script>
   <script src="script.js"></script>
   <link rel="stylesheet" type="text/css" href="/style.css">
 </head>
@@ -11,18 +15,17 @@
     <div class="credentials">
       <h1>Sign up for Vinyl</h1>
       <div>
-        name: <input placeholder="john" required>
+        name: <input name="name" placeholder="john" required>
       </div>
       <div>
-        e-mail: <input type="email" placeholder="johndoe@fake.com" required>
+        e-mail: <input name="email" type="email" placeholder="johndoe@fake.com" required>
       </div>
       <div>
-        password: <input id="password" type="password" placeholder="password" required>
+        password: <input name="password" id="password" type="password" placeholder="password" required>
       </div>
       <div>
-        confirm-password: <input id="confirm_password" type="password" placeholder="confirm password" required>
+        <button class="sign_up" type="submit">Sign Up</button>
       </div>
-      <button type="submit">Sign Up</button>
     </div>
   </form>
 

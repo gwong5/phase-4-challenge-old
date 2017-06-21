@@ -8,6 +8,19 @@ html, body {
   box-shadow: 0px 4px 2px #888888;
 }
 
+.title {
+  display: inline-block;
+}
+
+.site-map {
+  margin: 25px 15px;
+  float: right;
+}
+
+.map-button {
+  display: inline-block;
+}
+
 .splash {
   background-color: white;
   text-align: center;

@@ -22,6 +22,26 @@ const query = function(sql, variables, callback){
   })
 }
 
+const addUser = function(name, email, password, callback) {
+  query("INSERT INTO users (name, email, password) VALUES ($1, $2, $3)", [name, email, password], callback)
+}
+
+const checkUser = function(email, callback) {
+  query("SELECT * FROM users WHERE email ~* $1", [email])
+}
+
+const addReview = function(body, callback) {
+  query("INSERT INTO reviews (body) VALUES ($1)", [body], callback)
+}
+
+const getRecentReviews = function(callback) {
+  query("SELECT * FROM reviews ORDER BY date_ DESC LIMIT 3", [], callback)
+}
+
+const getAlbumReviews = function(albumID, callback) {
+  query("SELECT * FROM reviews ORDER BY date_ DESC WHERE album_id = $1", [albumID], callback)
+}
+
 const getAlbums = function(callback) {
   query("SELECT * FROM albums", [], callback)
 }
@@ -32,5 +52,10 @@ const getAlbumsByID = function(albumID, callback) {
 
 module.exports = {
   getAlbums,
-  getAlbumsByID
+  getAlbumsByID,
+  addUser,
+  addReview,
+  getRecentReviews,
+  getAlbumReviews,
+  checkUser
 }
