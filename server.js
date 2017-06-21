@@ -18,7 +18,10 @@ app.get('/home', (request, response) => {
     if (error) {
       response.status(500).render('error', { error: error })
     } else {
-      response.render('index', { albums: albums })
+      database.getRecentReviews(albums, (reviews) => {
+        response.render('index', { albums:albums, reviews: reviews })
+      })
+      // response.render('index', { albums: albums })
     }
   })
 })
@@ -29,6 +32,23 @@ app.get('/sign_in', (request, response) => {
 
 app.get('/sign_up', (request, response) => {
   response.render('sign_up')
+})
+
+// app.post('/signing_in', (request, response) => {
+//   const { email } = request.body
+//   database.checkUser(email, (error, user) => {
+//     if (error) {
+//       console.log(error)
+//     }
+//     console.log(user)
+//   })
+// })
+
+app.post('/signing_up', (request, response) => {
+  const { name, email, password} = request.body
+  database.addUser(name, email, password, (error) => {
+    response.redirect('/sign_up')
+  }) 
 })
 
 app.get('/new_review/:albumID', (request, response) => {
