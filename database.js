@@ -30,8 +30,8 @@ const checkUser = function(email, callback) {
   query("SELECT * FROM users WHERE email ~* $1", [email])
 }
 
-const addReview = function(body, callback) {
-  query("INSERT INTO reviews (body) VALUES ($1)", [body], callback)
+const addReview = function(albumID, body, callback) {
+  query("INSERT INTO reviews (album_id, body) VALUES ($1, $2)", [albumID, body], callback)
 }
 
 const getRecentReviews = function(callback) {

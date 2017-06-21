@@ -18,10 +18,7 @@ app.get('/home', (request, response) => {
     if (error) {
       response.status(500).render('error', { error: error })
     } else {
-      database.getRecentReviews(albums, (reviews) => {
-        response.render('index', { albums:albums, reviews: reviews })
-      })
-      // response.render('index', { albums: albums })
+      response.render('index', { albums: albums })
     }
   })
 })
@@ -49,6 +46,18 @@ app.post('/signing_up', (request, response) => {
   database.addUser(name, email, password, (error) => {
     response.redirect('/sign_up')
   }) 
+})
+
+app.post('/submit_review', (request, response) => {
+  console.log('running')
+  const albumID = 1
+  const { review } = request.body
+  database.addReview(albumID, review, (error) => {
+    if (error) {
+      console.log(error)
+    }
+    response.render("/home")
+  })
 })
 
 app.get('/new_review/:albumID', (request, response) => {
